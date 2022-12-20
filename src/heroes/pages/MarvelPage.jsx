@@ -1,8 +1,12 @@
-import { getHeroesByPublisher } from "../helpers/getHeroesByPublisher"
+import { HeroeList } from "../components"
 
 export const MarvelPage = () => {
-  console.log(getHeroesByPublisher('Marvel Comics'))
   return (
-    <h1>MarvelPage</h1>
+    <>
+      <h1>MarvelPage</h1>
+      <hr />
+
+      <HeroeList publisher='Marvel Comics' /> 
+    </>
   )
 }
