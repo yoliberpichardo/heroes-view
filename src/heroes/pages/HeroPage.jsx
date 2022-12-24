@@ -1,15 +1,18 @@
+
+import { useMemo } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { HeroeCard } from "../components";
 import { getHeroesByID } from "../helpers";
 
 export const HeroPage = () => {
   const { id } = useParams();
   const navigate = useNavigate()
-  const hero = getHeroesByID(id);
+
+  const hero = useMemo(() => getHeroesByID(id), [id]) 
 
   const onRedirectBack = () => {
     navigate(-1)
   }
+
 
 
   if (!hero) {
@@ -17,8 +20,8 @@ export const HeroPage = () => {
   }
 
   return (
-    <div className="row mt-5">
-      <div className="col-4">
+    <div className="row mt-5 animate__animated animate__rotateInUpLeft">
+      <div className="col-4 ">
         <img
           src={`/assets/heroes/${id}.jpg`}
           alt={hero.superhero}

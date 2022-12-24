@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import 'animate.css'
 
 export const HeroeCard = ({
   id,
@@ -13,7 +14,7 @@ export const HeroeCard = ({
 
   return (
     <div className="col">
-      <div className="card">
+      <div className="card  animate__animated animate__fadeInUp">
         <div className="row no-gutters">
           <div className="col-4">
             <img src={imageUrl} className="card-img" alt={superhero} />
