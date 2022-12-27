@@ -10,13 +10,15 @@ export const SearchHero = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {q = ''} = queryString.parse(location.search)
-
+  const {q = ''} = queryString.parse(location.search);
   const {searchText, onInputChange} = useForm({
     searchText: q
   })
-
   const heroes = useMemo(() => getHeroeByName(q), [q])
+
+  const showSearch = (q.length === 0);
+  const showError = (q.length > 0) && heroes.length === 0;
+
 
   const onSearchSubmit = (event) => {
     event.preventDefault();
@@ -57,11 +59,13 @@ export const SearchHero = () => {
         <h4>Result</h4>
         <hr />
 
-        <div className="alert alert-primary" style={{display: q ==='' ?  'flex': 'none'}}>
+        <div className="alert alert-primary animate__animated animate__fadeIn" 
+        style={{display: showSearch ?  '': 'none'}}>
           Search a Hero
         </div>
 
-        <div className="alert alert-danger" style={{display: heroes.length !== 0 ?}}>
+        <div className="alert alert-danger animate__animated animate__fadeIn" 
+        style={{display: showError ? '' : 'none'}}>
           No Hero with <b>{q}</b>
         </div>
 
